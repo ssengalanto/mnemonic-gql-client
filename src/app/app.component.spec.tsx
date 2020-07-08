@@ -1,9 +1,20 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import { App } from './app.component';
+import { shallow, ShallowWrapper } from 'enzyme';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/hello/i);
-  expect(linkElement).toBeInTheDocument();
+import { App } from 'app';
+
+const setup = (): ShallowWrapper => shallow(<App />);
+
+describe('<App /> Component', () => {
+  let wrapper: ShallowWrapper;
+  
+  beforeEach(() => {
+    wrapper = setup();
+  });
+
+  describe('Renders', () => {
+    it('should render without crashing', () => {
+      expect(wrapper.exists()).toBe(true);
+    });
+  });
 });
