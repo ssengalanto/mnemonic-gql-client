@@ -1,0 +1,7 @@
+node_modules/*
+src/__generated__/*
+public/*
+config/*
+serviceWorker.ts
+config-overrides.js
+*.d.ts
