@@ -1,0 +1,27 @@
+query Reminder($id: String!) {
+  reminder(id: $id) {
+    id
+    name
+    completed
+    user {
+      id
+      first_name
+      last_name
+      active
+    }
+  }
+}
+
+query Reminders {
+  reminders {
+    id
+    name
+    completed
+    date
+    user {
+      id
+      first_name
+      last_name
+    }
+  }
+}
