@@ -1,0 +1,6 @@
+fragment ReminderFields on Reminder {
+  id
+  name
+  completed
+  date
+}
