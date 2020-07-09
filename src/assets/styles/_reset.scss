@@ -11,10 +11,13 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
 // custom scrollbar style
 body::-webkit-scrollbar {
   width: 0.4rem;
-  font-family: 'Quicksand', sans-serif;
 }
 body::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.5);

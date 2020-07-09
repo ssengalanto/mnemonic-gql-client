@@ -7,6 +7,6 @@ import { main } from 'assets/themes';
 
 export const App: React.FC = () => (
   <ThemeProvider theme={main}>
-    <div>hello</div>;
+    <div>hello</div>
   </ThemeProvider>
 );
