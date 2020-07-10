@@ -47,6 +47,23 @@ describe('<Button /> Component', () => {
   });
 
   describe('Styled Props', () => {
+    it('props: { variant: contained, color: primary }', () => {
+      const wrapper = setup({ variant: 'contained', color: 'primary' });
+      expect(wrapper).toHaveStyleRule('background-color', mockTheme.color.brand.primary);
+    });
+
+    it('props: { variant: outlined, color: primary }', () => {
+      const wrapper = setup({ variant: 'outlined', color: 'primary' });
+      expect(wrapper).toHaveStyleRule('background-color', 'transparent');
+      expect(wrapper).toHaveStyleRule('border', `1px solid ${mockTheme.color.brand.primary}`);
+    });
+
+    it('props: { variant: base }', () => {
+      const wrapper = setup({ variant: 'base' });
+      expect(wrapper).toHaveStyleRule('padding', '0');
+      expect(wrapper).toHaveStyleRule('background-color', 'transparent');
+    });
+
     it('props: { color: primary }', () => {
       const wrapper = setup({ color: 'primary' });
       expect(wrapper).toHaveStyleRule('background-color', mockTheme.color.brand.primary);

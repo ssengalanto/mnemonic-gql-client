@@ -1,10 +1,12 @@
 // constants
 export const brandColor = ['primary', 'secondary', 'tertiary'] as const;
 export const stateColor = ['success', 'warn', 'danger'] as const;
+export const textColor = ['default', 'reverse', 'wash'] as const;
 
 // types
 export type BrandColor = typeof brandColor[number];
 export type StateColor = typeof stateColor[number];
+export type TextColor = typeof textColor[number];
 export type ColorProps = BrandColor | StateColor;
 
 // type-guards
