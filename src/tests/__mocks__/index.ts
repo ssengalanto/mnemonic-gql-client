@@ -1,1 +1,2 @@
-export * from './mock-component.utils';
+export * from './theme.mock';
+export * from './component.mock';
