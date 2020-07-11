@@ -1,8 +1,8 @@
 // constants
-export const brandColor = ['primary', 'secondary', 'tertiary'] as const;
-export const stateColor = ['success', 'warn', 'danger'] as const;
-export const textColor = ['default', 'reverse', 'wash'] as const;
-export const fontDensity = [
+const brandColor = ['primary', 'secondary', 'tertiary'] as const;
+const stateColor = ['success', 'warn', 'danger'] as const;
+const textColor = ['default', 'reverse', 'wash'] as const;
+const fontDensity = [
   'thin',
   'extra-light',
   'light',
@@ -13,12 +13,14 @@ export const fontDensity = [
   'extra-bold',
   'heavy',
 ] as const;
+const fontFamily = ['primary', 'secondary'] as const;
 
 // types
 export type BrandColor = typeof brandColor[number];
 export type StateColor = typeof stateColor[number];
 export type TextColor = typeof textColor[number];
 export type FontDensity = typeof fontDensity[number];
+export type FontFamily = typeof fontFamily[number];
 
 // type-guards
 export const isBrandColor = (color?: string): color is BrandColor => {
