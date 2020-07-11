@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-computed-key */
 import { DefaultTheme } from 'styled-components';
 
 import { Fonts, Colors, Breakpoints, FontWeight } from 'shared/enums';
@@ -38,13 +39,13 @@ export const main: DefaultTheme = {
   },
   density: {
     thin: FontWeight.THIN,
-    extraLight: FontWeight.EXTRA_LIGHT,
+    ['extra-light']: FontWeight.EXTRA_LIGHT,
     light: FontWeight.LIGHT,
     regular: FontWeight.REGULAR,
     medium: FontWeight.MEDIUM,
-    semiBold: FontWeight.SEMI_BOLD,
+    ['semi-bold']: FontWeight.SEMI_BOLD,
     bold: FontWeight.BOLD,
-    extraBold: FontWeight.EXTRA_BOLD,
+    ['extra-bold']: FontWeight.EXTRA_BOLD,
     heavy: FontWeight.HEAVY,
   },
   breakpoint: {
