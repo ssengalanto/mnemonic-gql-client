@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components';
 
-import { Fonts, Colors, Breakpoints } from 'shared/enums';
+import { Fonts, Colors, Breakpoints, FontWeight } from 'shared/enums';
 
 export const mockTheme: DefaultTheme = {
   color: {
@@ -35,6 +35,17 @@ export const mockTheme: DefaultTheme = {
   font: {
     primary: Fonts.PRIMARY,
     secondary: Fonts.SECONDARY,
+  },
+  density: {
+    thin: FontWeight.THIN,
+    extraLight: FontWeight.EXTRA_LIGHT,
+    light: FontWeight.LIGHT,
+    regular: FontWeight.REGULAR,
+    medium: FontWeight.MEDIUM,
+    semiBold: FontWeight.SEMI_BOLD,
+    bold: FontWeight.BOLD,
+    extraBold: FontWeight.EXTRA_BOLD,
+    heavy: FontWeight.HEAVY,
   },
   breakpoint: {
     xs: Breakpoints.XS,

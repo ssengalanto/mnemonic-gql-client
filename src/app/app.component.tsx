@@ -3,12 +3,13 @@ import 'assets/styles/main.scss';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
-import { Button } from 'shared/components';
+import { Button, Logo } from 'shared/components';
 
 import { main } from 'assets/themes';
 
 export const App: React.FC = () => (
   <ThemeProvider theme={main}>
+    <Logo>mnemonic</Logo>
     <Button variant="contained" color="primary">
       hello
     </Button>

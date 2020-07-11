@@ -6,7 +6,7 @@ import { ColorProps, isBrandColor, isStateColor } from 'shared/types';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   color?: ColorProps;
-  variant?: 'contained' | 'outlined' | 'base' | 'disabled';
+  variant?: 'contained' | 'outlined' | 'base';
 }
 
 const outlined = (color: string) => css`
