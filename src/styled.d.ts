@@ -37,13 +37,13 @@ declare module 'styled-components' {
     };
     density: {
       thin: number;
-      extraLight: number;
+      ['extra-light']: number;
       light: number;
       regular: number;
       medium: number;
-      semiBold: number;
+      ['semi-bold']: number;
       bold: number;
-      extraBold: number;
+      ['extra-bold']: number;
       heavy: number;
     };
     breakpoint: {

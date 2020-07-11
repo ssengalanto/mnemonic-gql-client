@@ -2,10 +2,10 @@
 import styled, { css } from 'styled-components';
 import { getContrast, darken, lighten } from 'polished';
 
-import { ColorProps, isBrandColor, isStateColor } from 'shared/types';
+import { BrandColor, StateColor, isBrandColor, isStateColor } from 'shared/types';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
-  color?: ColorProps;
+  color?: BrandColor | StateColor;
   variant?: 'contained' | 'outlined' | 'base';
 }
 
