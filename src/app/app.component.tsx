@@ -10,17 +10,17 @@ import { main } from 'assets/themes';
 export const App: React.FC = () => (
   <ThemeProvider theme={main}>
     <Logo>mnemonic</Logo>
-    <Row gutter={[20, 20]}>
+    <Row gutter={[20, 20]} justify="center">
       <Button variant="contained" color="primary">
         hello
       </Button>
+      <Button variant="contained" color="secondary">
+        hello
+      </Button>
+      <Button variant="contained" color="tertiary">
+        hello
+      </Button>
     </Row>
-    <Button variant="contained" color="secondary">
-      hello
-    </Button>
-    <Button variant="contained" color="tertiary">
-      hello
-    </Button>
     <div style={{ paddingTop: 10 }}>
       <Button variant="outlined" color="primary">
         hello

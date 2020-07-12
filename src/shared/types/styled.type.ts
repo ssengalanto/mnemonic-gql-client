@@ -32,6 +32,9 @@ export type FlexAlignment =
 export type JustifyContent = Exclude<FlexAlignment, 'stretch' | 'baseline'>;
 export type AlignContent = Exclude<FlexAlignment, 'baseline' | 'space-evenly'>;
 export type AlignItems = Exclude<FlexAlignment, 'space-between' | 'space-around' | 'space-evenly'>;
+export type AlignSelf =
+  | 'auto'
+  | Exclude<FlexAlignment, 'space-between' | 'space-around' | 'space-evenly'>;
 export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
 
 // type-guards

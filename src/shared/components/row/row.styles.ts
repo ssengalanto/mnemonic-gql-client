@@ -18,12 +18,11 @@ const Row = styled.div<RowProps>`
   align-content: ${(props) => props.alignContent || 'stretch'};
   justify-content: ${(props) => props.justify || 'flex-start'};
   flex-wrap: ${(props) => props.wrap};
+
   padding: ${(props) => {
     if (typeof props.gutter === 'number') return rem(`${props.gutter}px`);
-
     if (props.gutter instanceof Array)
       return `${rem(`${props.gutter[0]}px`)} ${rem(`${props.gutter[1]}px`)}`;
-
     return 0;
   }};
 `;
