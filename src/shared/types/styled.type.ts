@@ -1,14 +1,13 @@
-// constants
+// CONSTANTS
 const brandColor = ['primary', 'secondary', 'tertiary'] as const;
 const stateColor = ['success', 'warn', 'danger'] as const;
 const textColor = ['default', 'reverse', 'wash'] as const;
 
-// types
+/* THEME PROPS */
 export type BrandColor = typeof brandColor[number];
 export type StateColor = typeof stateColor[number];
 export type TextColor = typeof textColor[number];
-
-export type FontDensity =
+export type FontDensityProps =
   | 'thin'
   | 'extra-light'
   | 'light'
@@ -18,8 +17,11 @@ export type FontDensity =
   | 'bold'
   | 'extra-bold'
   | 'heavy';
-export type FontFamily = 'primary' | 'secondary';
-export type FlexDirection = 'row' | 'row-reverse' | 'column' | 'column-reverse';
+export type FontFamilyProps = 'primary' | 'secondary';
+export type ButtonVariantProps = 'contained' | 'outlined' | 'base';
+
+/* HTML ELEMENT PROPS */
+export type FlexDirectionProps = 'row' | 'row-reverse' | 'column' | 'column-reverse';
 export type FlexAlignment =
   | 'flex-start'
   | 'center'
@@ -29,15 +31,20 @@ export type FlexAlignment =
   | 'space-between'
   | 'space-around'
   | 'space-evenly';
-export type JustifyContent = Exclude<FlexAlignment, 'stretch' | 'baseline'>;
-export type AlignContent = Exclude<FlexAlignment, 'baseline' | 'space-evenly'>;
-export type AlignItems = Exclude<FlexAlignment, 'space-between' | 'space-around' | 'space-evenly'>;
-export type AlignSelf =
+export type JustifyContentProps = Exclude<FlexAlignment, 'stretch' | 'baseline'>;
+export type AlignContentProps = Exclude<FlexAlignment, 'baseline' | 'space-evenly'>;
+export type AlignItemsProps = Exclude<
+  FlexAlignment,
+  'space-between' | 'space-around' | 'space-evenly'
+>;
+export type AlignSelfProps =
   | 'auto'
   | Exclude<FlexAlignment, 'space-between' | 'space-around' | 'space-evenly'>;
-export type FlexWrap = 'nowrap' | 'wrap' | 'wrap-reverse';
+export type FlexWrapProps = 'nowrap' | 'wrap' | 'wrap-reverse';
+export type TextAlignProps = 'inherit' | 'left' | 'center' | 'right' | 'justify';
+export type DisplayProps = 'flex' | 'initial' | 'block' | 'inline';
 
-// type-guards
+// TYPE GUARDS
 export const isBrandColor = (color?: string): color is BrandColor => {
   if (!color) return false;
   return (brandColor as readonly string[]).includes(color);

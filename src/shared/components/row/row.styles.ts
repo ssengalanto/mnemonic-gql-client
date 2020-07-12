@@ -1,13 +1,19 @@
 import { rem } from 'polished';
 import styled from 'styled-components';
-import { FlexDirection, AlignItems, JustifyContent, AlignContent, FlexWrap } from 'shared/types';
+import {
+  FlexDirectionProps,
+  AlignItemsProps,
+  JustifyContentProps,
+  AlignContentProps,
+  FlexWrapProps,
+} from 'shared/types';
 
 export interface RowProps extends React.ComponentPropsWithoutRef<'div'> {
-  direction?: FlexDirection;
-  alignItems?: AlignItems;
-  justify?: JustifyContent;
-  alignContent?: AlignContent;
-  wrap?: FlexWrap;
+  direction?: FlexDirectionProps;
+  alignItems?: AlignItemsProps;
+  justify?: JustifyContentProps;
+  alignContent?: AlignContentProps;
+  wrap?: FlexWrapProps;
   gutter?: number | [number, number];
 }
 

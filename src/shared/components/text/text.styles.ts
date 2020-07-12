@@ -3,21 +3,23 @@ import {
   BrandColor,
   StateColor,
   TextColor,
-  FontDensity,
+  FontDensityProps,
   isBrandColor,
   isStateColor,
   isTextColor,
-  FontFamily,
+  FontFamilyProps,
+  TextAlignProps,
+  DisplayProps,
 } from 'shared/types';
 
 export interface TextProps extends React.ComponentPropsWithoutRef<'p'> {
   noWrap?: boolean;
   gutterBottom?: boolean;
   color?: BrandColor | StateColor | TextColor;
-  font?: FontFamily;
-  density?: FontDensity;
-  align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
-  display?: 'initial' | 'block' | 'inline';
+  font?: FontFamilyProps;
+  density?: FontDensityProps;
+  align?: TextAlignProps;
+  display?: Exclude<DisplayProps, 'flex'>;
 }
 
 const noWrap = css`

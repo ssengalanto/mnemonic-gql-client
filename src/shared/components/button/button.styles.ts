@@ -2,11 +2,17 @@
 import styled, { css } from 'styled-components';
 import { getContrast, darken, lighten } from 'polished';
 
-import { BrandColor, StateColor, isBrandColor, isStateColor } from 'shared/types';
+import {
+  BrandColor,
+  StateColor,
+  isBrandColor,
+  isStateColor,
+  ButtonVariantProps,
+} from 'shared/types';
 
 export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   color?: BrandColor | StateColor;
-  variant?: 'contained' | 'outlined' | 'base';
+  variant?: ButtonVariantProps;
 }
 
 const outlined = (color: string) => css`
