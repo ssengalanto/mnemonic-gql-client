@@ -1,12 +1,12 @@
 import { rem } from 'polished';
 import styled, { css } from 'styled-components';
 import {
-  AlignSelf,
-  FlexDirection,
-  AlignItems,
-  JustifyContent,
-  FlexWrap,
-  AlignContent,
+  AlignSelfProps,
+  FlexDirectionProps,
+  AlignItemsProps,
+  JustifyContentProps,
+  FlexWrapProps,
+  AlignContentProps,
 } from 'shared/types';
 
 export interface ColProps extends React.ComponentPropsWithoutRef<'div'> {
@@ -15,13 +15,13 @@ export interface ColProps extends React.ComponentPropsWithoutRef<'div'> {
   span?: number;
   flexGrow?: number;
   flexShrink?: number;
-  alignSelf?: AlignSelf;
-  direction?: FlexDirection;
-  alignItems?: AlignItems;
-  justify?: JustifyContent;
-  alignContent?: AlignContent;
+  alignSelf?: AlignSelfProps;
+  direction?: FlexDirectionProps;
+  alignItems?: AlignItemsProps;
+  justify?: JustifyContentProps;
+  alignContent?: AlignContentProps;
   gutter?: number | [number, number];
-  wrap?: FlexWrap;
+  wrap?: FlexWrapProps;
 }
 
 const flex = css`
