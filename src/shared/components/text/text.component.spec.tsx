@@ -125,6 +125,16 @@ describe('<Logo /> Component', () => {
       expect(wrapper).toHaveStyleRule('font-weight', `${mockTheme.density.heavy}`);
     });
 
+    it('props: { font: primary }', () => {
+      const wrapper = setup({ font: 'primary' });
+      expect(wrapper).toHaveStyleRule('font-family', mockTheme.font.primary);
+    });
+
+    it('props: { font: secondary }', () => {
+      const wrapper = setup({ font: 'secondary' });
+      expect(wrapper).toHaveStyleRule('font-family', mockTheme.font.secondary);
+    });
+
     it('props: noWrap = true', () => {
       const wrapper = setup({ noWrap: true });
       expect(wrapper).toHaveStyleRule('white-space', 'nowrap');

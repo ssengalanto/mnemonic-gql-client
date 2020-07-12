@@ -7,12 +7,14 @@ import {
   isBrandColor,
   isStateColor,
   isTextColor,
+  FontFamily,
 } from 'shared/types';
 
 export interface TextProps extends React.ComponentPropsWithoutRef<'p'> {
   noWrap?: boolean;
   gutterBottom?: boolean;
   color?: BrandColor | StateColor | TextColor;
+  font?: FontFamily;
   density?: FontDensity;
   align?: 'inherit' | 'left' | 'center' | 'right' | 'justify';
   display?: 'initial' | 'block' | 'inline';
@@ -28,11 +30,11 @@ const gutterBottom = css`
 
 const Text = styled.p<TextProps>`
   display: ${(props) => props.display || 'initial'};
-  font-family: ${(props) => props.theme.font.primary};
   text-align: ${(props) => props.align || 'inherit'};
   ${(props) => props.noWrap && noWrap};
   ${(props) => props.gutterBottom && gutterBottom};
-  font-weight: ${(props) => props.theme.density[props.density ?? 'regular']};
+  font-family: ${(props) => props.theme.font[props.font || 'primary']};
+  font-weight: ${(props) => props.theme.density[props.density || 'regular']};
 
   color: ${(props) => {
     if (isBrandColor(props.color)) return props.theme.color.brand[props.color];
