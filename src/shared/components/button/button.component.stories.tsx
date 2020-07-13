@@ -7,84 +7,84 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { Presentation } from 'shared/storybook-ui';
 
 import { Row, Text, Col } from '..';
-import { Button } from './button.component';
+import { Button as SButton } from './button.component';
 
 export default {
-  title: 'Components/Button',
+  title: 'Components',
   decorators: [withA11y, withKnobs],
-  component: Button,
+  component: SButton,
 };
 
-export const Default: React.FC = () => (
+export const Button: React.FC = () => (
   <>
     <Presentation title="Buttons" description="Reusable button component." />
 
-    <Row justify="space-between" direction="column" gutter={[20, 0]} style={{ width: '40%' }}>
+    <Row justify="space-between" direction="column" gutter={[20, 0]} span={10}>
       <Col>
         <Text gutterBottom density="semi-bold">
           Contained Button
         </Text>
       </Col>
       <Col flex justify="space-between">
-        <Button variant="contained" color="primary" onClick={action('button-click')}>
+        <SButton variant="contained" color="primary" onClick={action('button-click')}>
           <Text color="reverse">Primary</Text>
-        </Button>
-        <Button variant="contained" color="secondary" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="contained" color="secondary" onClick={action('button-click')}>
           <Text color="reverse">Secondary</Text>
-        </Button>
-        <Button variant="contained" color="tertiary" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="contained" color="tertiary" onClick={action('button-click')}>
           <Text color="reverse">Tertiary</Text>
-        </Button>
-        <Button variant="contained" color="success" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="contained" color="success" onClick={action('button-click')}>
           <Text color="reverse">Success</Text>
-        </Button>
-        <Button variant="contained" color="warn" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="contained" color="warn" onClick={action('button-click')}>
           <Text color="reverse">Warn</Text>
-        </Button>
-        <Button variant="contained" color="danger" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="contained" color="danger" onClick={action('button-click')}>
           <Text color="reverse">Danger</Text>
-        </Button>
+        </SButton>
       </Col>
     </Row>
 
-    <Row justify="space-between" direction="column" gutter={[20, 0]} style={{ width: '40%' }}>
+    <Row justify="space-between" direction="column" gutter={[20, 0]} span={10}>
       <Col>
         <Text gutterBottom density="semi-bold">
           Outlined Button
         </Text>
       </Col>
       <Col span={24} flex justify="space-between">
-        <Button variant="outlined" color="primary" onClick={action('button-click')}>
+        <SButton variant="outlined" color="primary" onClick={action('button-click')}>
           Primary
-        </Button>
-        <Button variant="outlined" color="secondary" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="outlined" color="secondary" onClick={action('button-click')}>
           Secondary
-        </Button>
-        <Button variant="outlined" color="tertiary" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="outlined" color="tertiary" onClick={action('button-click')}>
           Tertiary
-        </Button>
-        <Button variant="outlined" color="success" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="outlined" color="success" onClick={action('button-click')}>
           Success
-        </Button>
-        <Button variant="outlined" color="warn" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="outlined" color="warn" onClick={action('button-click')}>
           Warn
-        </Button>
-        <Button variant="outlined" color="danger" onClick={action('button-click')}>
+        </SButton>
+        <SButton variant="outlined" color="danger" onClick={action('button-click')}>
           Danger
-        </Button>
+        </SButton>
       </Col>
     </Row>
 
-    <Row justify="space-between" direction="column" gutter={[20, 0]} style={{ width: '30%' }}>
+    <Row justify="space-between" direction="column" gutter={[20, 0]} span={10}>
       <Col>
         <Text gutterBottom density="semi-bold">
           Base Button
         </Text>
       </Col>
       <Col flex justify="space-between">
-        <Button variant="base" onClick={action('button-click')}>
+        <SButton variant="base" onClick={action('button-click')}>
           Base Button
-        </Button>
+        </SButton>
       </Col>
     </Row>
   </>

@@ -58,6 +58,11 @@ describe('<Row /> Component', () => {
       expect(wrapper).toHaveStyleRule('flex-wrap', 'wrap-reverse');
     });
 
+    it('props: span = 0 - 24', () => {
+      const wrapper = setup({ span: 24 });
+      expect(wrapper).toHaveStyleRule('width', '100%');
+    });
+
     it('props: gutter = number', () => {
       const gutter = 200;
       const wrapper = setup({ gutter });
