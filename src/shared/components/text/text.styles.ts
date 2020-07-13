@@ -31,7 +31,8 @@ const gutterBottom = css`
 `;
 
 const Text = styled.p<TextProps>`
-  display: ${(props) => props.display || 'initial'};
+  font-size: 1.4rem;
+  display: ${(props) => props.display || 'block'};
   text-align: ${(props) => props.align || 'inherit'};
   ${(props) => props.noWrap && noWrap};
   ${(props) => props.gutterBottom && gutterBottom};
