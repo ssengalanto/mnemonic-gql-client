@@ -20,7 +20,7 @@ const outlined = (color: string) => css`
   color: ${color};
   border: 1px solid ${color};
   &:hover {
-    box-shadow: 0px 4px 8px 0px ${lighten(0.3, color)};
+    box-shadow: 0px 3px 8px 0px ${lighten(0.25, color)};
   }
 `;
 
@@ -34,7 +34,7 @@ const contained = (color: string) => css`
   };
   &:hover {
     background-color: ${darken(0.1, color)};
-    box-shadow: 0px 4px 8px 0px ${lighten(0.3, color)};
+    box-shadow: 0px 3px 8px 0px ${lighten(0.25, color)};
   }
   `}
 `;
