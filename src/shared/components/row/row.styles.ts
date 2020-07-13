@@ -13,6 +13,7 @@ export interface RowProps extends React.ComponentPropsWithoutRef<'div'> {
   alignItems?: AlignItemsProps;
   justify?: JustifyContentProps;
   alignContent?: AlignContentProps;
+  span?: number;
   wrap?: FlexWrapProps;
   gutter?: number | [number, number];
 }
@@ -24,6 +25,13 @@ const Row = styled.div<RowProps>`
   align-content: ${(props) => props.alignContent || 'stretch'};
   justify-content: ${(props) => props.justify || 'flex-start'};
   flex-wrap: ${(props) => props.wrap};
+
+  width: ${(props) => {
+    if (!props.span) return 'auto';
+    if (props.span >= 24) return `100%`;
+    if (props.span <= 0) return `0%`;
+    return `${((100 / 24) * props.span).toFixed(0)}%`;
+  }};
 
   padding: ${(props) => {
     if (typeof props.gutter === 'number') return rem(`${props.gutter}px`);
