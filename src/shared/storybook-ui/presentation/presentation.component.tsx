@@ -6,7 +6,7 @@ import { S } from './presentation.styles';
 
 interface Props {
   title: string;
-  description: string;
+  description?: string;
 }
 
 export const Presentation: React.FC<Props> = ({ title, description }) => (
@@ -14,6 +14,6 @@ export const Presentation: React.FC<Props> = ({ title, description }) => (
     <S.Title gutterBottom density="semi-bold">
       {title}
     </S.Title>
-    <Text>{description}</Text>
+    {description && <Text>{description}</Text>}
   </S.Container>
 );
