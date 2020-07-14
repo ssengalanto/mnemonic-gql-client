@@ -1,14 +1,16 @@
 import React from 'react';
 import { ShallowWrapper, shallow } from 'enzyme';
+import { DefaultTheme } from 'styled-components';
 
-import { findByTestId } from 'tests';
+import { findByTestId, mockTheme } from 'tests';
 
 import { MenuIcon } from './menu-icon.component';
 
-type Props = React.ComponentProps<typeof MenuIcon>;
+type Props = { theme: DefaultTheme } & React.ComponentProps<typeof MenuIcon>;
 
 const mockedProps: Props = {
   isOpen: false,
+  theme: mockTheme,
 };
 
 const setup = (props: Partial<Props> = {}): ShallowWrapper => {

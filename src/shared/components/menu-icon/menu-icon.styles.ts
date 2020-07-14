@@ -1,9 +1,31 @@
 /* stylelint-disable */
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import {
+  isBrandColor,
+  isStateColor,
+  isTextColor,
+  TextColor,
+  StateColor,
+  BrandColor,
+} from 'shared/types';
 
 export interface BurgerProps {
   isOpen?: boolean;
+  color?: BrandColor | StateColor | TextColor;
 }
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+const getBgColor = (color?: string) => css`
+  ${(props) => {
+    if (isBrandColor(color)) return props.theme.color.brand[color];
+
+    if (isStateColor(color)) return props.theme.color[color].default;
+
+    if (isTextColor(color)) return props.theme.color.text[color];
+
+    return props.theme.color.text.default;
+  }};
+`;
 
 const Burger = styled.div`
   .burger {
@@ -43,7 +65,7 @@ const Burger = styled.div`
     content: '';
     width: 100%;
     border-radius: 0.25em;
-    background-color: ${(props) => props.theme.color.brand.tertiary};
+    background-color: ${(props) => getBgColor(props.color)};
     height: 0.25em;
     position: absolute;
     transform: rotate(0);
