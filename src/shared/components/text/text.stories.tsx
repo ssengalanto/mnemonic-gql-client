@@ -21,6 +21,7 @@ const colors = {
 export const Text: React.FC = () => {
   const color = radios('Color', colors, 'primary');
   const label = text('Label', 'This is a sample paragraph.');
+  console.log(color);
   return (
     <>
       <Presentation title="Text" description="Checkout the knobs to interact with the component." />
@@ -32,7 +33,7 @@ export const Text: React.FC = () => {
           </SText>
         </Col>
         <Col>
-          <SText color={color}>{label}</SText>
+          <SText color="default">{label}</SText>
         </Col>
       </Row>
     </>
