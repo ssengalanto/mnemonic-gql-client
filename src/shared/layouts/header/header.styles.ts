@@ -1,9 +1,16 @@
 import styled from 'styled-components';
 
+import { Row as SharedRow } from 'shared/components';
+
 const Header = styled.header`
-  padding: 2rem;
   display: flex;
   justify-content: center;
 `;
 
-export const S = { Header };
+const Row = styled(SharedRow)`
+  width: 100%;
+  max-width: 114rem;
+  padding: 2rem;
+`;
+
+export const S = { Header, Row };
