@@ -49,7 +49,7 @@ describe('<Routes /> Component', () => {
 
   describe('Renders', () => {
     it('should render without crashing', () => {
-      expect(wrapper.length).toBe(1);
+      expect(wrapper.exists()).toBe(true);
     });
 
     it('should render all public and private routes when user is authenticated', () => {
