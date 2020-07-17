@@ -13,15 +13,15 @@ interface Props {
 
 const AnimatedContainer = animated(S.Container);
 
-export const Backdrop = ({ open, onClick, children }: React.PropsWithChildren<Props>) => {
-  const { transitions } = useFadeTransition(open);
+export const Backdrop: React.FC<Props> = ({ open, onClick, children }) => {
+  const { transition } = useFadeTransition(open);
 
-  return transitions(
+  return transition(
     (props, item) =>
       item && (
         <AnimatedContainer style={props} data-test-id="backdrop-component">
           {children}
-          <S.Overlay onClick={onClick} aria-hidden data-test-id="backdrop-component:overlay" />
+          <S.Overlay onClick={onClick} data-test-id="backdrop-component:overlay" />
         </AnimatedContainer>
       ),
   );

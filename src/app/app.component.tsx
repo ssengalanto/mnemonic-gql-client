@@ -7,11 +7,12 @@ import { Router } from '@reach/router';
 import { main } from 'assets/themes';
 import { useToggle } from 'shared/hooks';
 import { Header, Wrapper } from 'shared/layouts';
+import { Drawer } from 'shared/components';
 import { RoutesContainer } from 'routes/routes.container';
 import LoginPage from 'pages/login.page';
 
 export const App: React.FC = () => {
-  const { open, handleToggle } = useToggle();
+  const { open, handleToggle, handleEscKey, handleClose } = useToggle();
 
   return (
     <ThemeProvider theme={main}>
@@ -24,6 +25,9 @@ export const App: React.FC = () => {
         <Suspense fallback={<div>loading...</div>}>
           <RoutesContainer />
         </Suspense>
+        <Drawer open={open} onClick={handleClose} onKeyDown={handleEscKey}>
+          hello
+        </Drawer>
       </Wrapper>
     </ThemeProvider>
   );
