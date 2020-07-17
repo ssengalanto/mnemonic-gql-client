@@ -12,9 +12,8 @@ interface Props {
 export const Routes: React.FC<Props> = ({ routes, authenticated }) => (
   <Router>
     {routes.map(({ type, path, component: Component }) => {
-      if (type === RouteType.PRIVATE) {
-        if (!authenticated) return <Redirect key={path} from="/" to="/login" noThrow />;
-      }
+      if (type === RouteType.PRIVATE && !authenticated)
+        return <Redirect key={path} from="/" to="/login" noThrow />;
 
       return <Component key={path} path={path} data-test-id="route-component" />;
     })}

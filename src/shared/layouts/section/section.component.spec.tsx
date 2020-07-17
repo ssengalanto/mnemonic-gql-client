@@ -3,16 +3,16 @@ import { shallow, ShallowWrapper } from 'enzyme';
 
 import { MockComponent } from 'tests';
 
-import { Container } from './container.component';
+import { Section } from './section.component';
 
 const setup = (): ShallowWrapper =>
   shallow(
-    <Container>
+    <Section>
       <MockComponent />
-    </Container>,
+    </Section>,
   );
 
-describe('<Container /> Component', () => {
+describe('<Section /> Component', () => {
   let component: ShallowWrapper;
 
   beforeEach(() => {
