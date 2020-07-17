@@ -12,7 +12,7 @@ import { RoutesContainer } from 'routes/routes.container';
 import LoginPage from 'pages/login.page';
 
 export const App: React.FC = () => {
-  const { open, handleToggle } = useToggle();
+  const { open, handleToggle, handleEscKey, handleClose } = useToggle();
 
   return (
     <ThemeProvider theme={main}>
@@ -25,7 +25,7 @@ export const App: React.FC = () => {
         <Suspense fallback={<div>loading...</div>}>
           <RoutesContainer />
         </Suspense>
-        <Drawer open={open} onClick={handleToggle}>
+        <Drawer open={open} onClick={handleClose} onKeyDown={handleEscKey}>
           hello
         </Drawer>
       </Wrapper>

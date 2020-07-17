@@ -16,7 +16,7 @@ export const useToggle = () => {
     setOpen((x) => !x);
   };
 
-  const escKeyHandler: React.KeyboardEventHandler = (e) => {
+  const handleEscKey: React.KeyboardEventHandler = (e) => {
     if (e.key === 'Escape') {
       setOpen(false);
     }
@@ -27,6 +27,6 @@ export const useToggle = () => {
     handleOpen,
     handleClose,
     handleToggle,
-    escKeyHandler,
+    handleEscKey,
   };
 };
