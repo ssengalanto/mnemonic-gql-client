@@ -7,6 +7,7 @@ import { Router } from '@reach/router';
 import { main } from 'assets/themes';
 import { useToggle } from 'shared/hooks';
 import { Header, Wrapper } from 'shared/layouts';
+import { Drawer } from 'shared/components';
 import { RoutesContainer } from 'routes/routes.container';
 import LoginPage from 'pages/login.page';
 
@@ -24,6 +25,9 @@ export const App: React.FC = () => {
         <Suspense fallback={<div>loading...</div>}>
           <RoutesContainer />
         </Suspense>
+        <Drawer open={open} onClick={handleToggle}>
+          hello
+        </Drawer>
       </Wrapper>
     </ThemeProvider>
   );

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Row as SharedRow } from 'shared/components';
+import { Row as SharedRow, Button as SharedButton } from 'shared/components';
 
 const Header = styled.header`
   display: flex;
@@ -14,4 +14,8 @@ const Row = styled(SharedRow)`
   padding: 1.5rem 2rem;
 `;
 
-export const S = { Header, Row };
+const Button = styled(SharedButton)`
+  z-index: 120;
+`;
+
+export const S = { Header, Row, Button };

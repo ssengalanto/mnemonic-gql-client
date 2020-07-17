@@ -4,3 +4,5 @@ export * from './button';
 export * from './menu-icon';
 export * from './col';
 export * from './row';
+export * from './backdrop';
+export * from './drawer';
