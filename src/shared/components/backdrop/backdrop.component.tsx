@@ -21,7 +21,7 @@ export const Backdrop = ({ open, onClick, children }: React.PropsWithChildren<Pr
       item && (
         <AnimatedContainer style={props} data-test-id="backdrop-component">
           {children}
-          <S.Overlay onClick={onClick} aria-hidden />
+          <S.Overlay onClick={onClick} aria-hidden data-test-id="backdrop-component:overlay" />
         </AnimatedContainer>
       ),
   );

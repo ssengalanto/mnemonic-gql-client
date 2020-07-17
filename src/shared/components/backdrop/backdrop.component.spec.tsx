@@ -53,4 +53,13 @@ describe('<Backdrop /> Component', () => {
       expect(component.exists()).toBe(false);
     });
   });
+
+  describe('Interactions', () => {
+    it('should call onClick props when backdrop is clicked', () => {
+      const wrapper = setup();
+      const component = findByTestId(wrapper, 'backdrop-component:overlay');
+      component.simulate('click');
+      expect(mockedProps.onClick).toHaveBeenCalledTimes(1);
+    });
+  });
 });
