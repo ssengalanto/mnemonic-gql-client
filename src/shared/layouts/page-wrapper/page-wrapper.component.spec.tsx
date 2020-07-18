@@ -10,6 +10,7 @@ type Props = React.ComponentProps<typeof PageWrapper>;
 const mockedProps: Props = {
   title: '',
   description: '',
+  full: false,
 };
 
 const setup = (props: Partial<Props> = {}): ShallowWrapper => {
@@ -23,18 +24,40 @@ const setup = (props: Partial<Props> = {}): ShallowWrapper => {
 
 describe('<PageWrapper /> Component', () => {
   let wrapper: ShallowWrapper;
+
   beforeEach(() => {
     wrapper = setup();
-    return wrapper;
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   describe('Renders', () => {
     it('should render without crashing', () => {
-      expect(wrapper.length).toBe(1);
+      expect(wrapper.exists()).toBe(true);
     });
 
     it('should render its children props', () => {
       expect(wrapper.contains(<MockComponent />)).toBe(true);
+    });
+
+    it('should render header and footer when full props is true', () => {
+      const wrapper = setup({ full: true });
+      const header = findByTestId(wrapper, 'page-wrapper:header');
+      const footer = findByTestId(wrapper, 'page-wrapper:footer');
+
+      expect(header.exists()).toBe(true);
+      expect(footer.exists()).toBe(true);
+    });
+
+    it('should not render header and footer when full props is false', () => {
+      const wrapper = setup({ full: false });
+      const header = findByTestId(wrapper, 'page-wrapper:header');
+      const footer = findByTestId(wrapper, 'page-wrapper:footer');
+
+      expect(header.exists()).toBe(false);
+      expect(footer.exists()).toBe(false);
     });
   });
 

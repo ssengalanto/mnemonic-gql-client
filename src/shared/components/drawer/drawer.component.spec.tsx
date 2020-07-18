@@ -10,6 +10,7 @@ type Props = React.ComponentProps<typeof Drawer>;
 const mockedProps: Props = {
   open: true,
   onClick: jest.fn(),
+  onKeyDown: jest.fn(),
 };
 
 const setup = (props: Partial<Props> = {}): ShallowWrapper => {
@@ -55,6 +56,13 @@ describe('<Drawer /> Component', () => {
   });
 
   describe('Interactions', () => {
+    it('should call onKeyDown props when esc key is pressed', () => {
+      const wrapper = setup();
+      const component = findByTestId(wrapper, 'drawer-component');
+      component.simulate('keyDown', { key: 'Esc' });
+      expect(mockedProps.onKeyDown).toHaveBeenCalledTimes(1);
+    });
+
     it('should call onClick props when backdrop is clicked', () => {
       const wrapper = setup();
       const component = findByTestId(wrapper, 'drawer-component:backdrop');
