@@ -5,13 +5,16 @@ import { Row as SharedRow, Text as SharedText } from 'shared/components';
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
-  background-color: ${(props) => props.theme.color.brand.secondary};
 `;
 
 const Row = styled(SharedRow)`
   width: 100%;
   max-width: 114rem;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
+
+  @media (min-width: ${(props) => props.theme.breakpoint.lg}) {
+    padding: 3rem;
+  }
 `;
 
 const Text = styled(SharedText)`
