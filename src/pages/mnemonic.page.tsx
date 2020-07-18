@@ -1,13 +1,13 @@
 import React from 'react';
 import { RouteComponentProps } from '@reach/router';
 
+import { PageWrapper } from 'shared/layouts';
 import { MnemonicContainer } from 'modules/mnemonic';
-import { PageWrapper } from 'shared/components/page-wrapper';
 
 interface Props extends RouteComponentProps {}
 
 const MnemonicPage: React.FC<Props> = () => (
-  <PageWrapper title="Home" description="Welcome to Mnemonic">
+  <PageWrapper title="Welcome" description="Welcome to Mnemonic">
     <MnemonicContainer />
   </PageWrapper>
 );

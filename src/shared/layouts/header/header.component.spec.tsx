@@ -8,8 +8,10 @@ import { Header } from './header.component';
 type Props = React.ComponentProps<typeof Header>;
 
 const mockedProps: Props = {
-  onClick: jest.fn(),
   open: false,
+  handleClose: jest.fn(),
+  handleEscKey: jest.fn(),
+  handleToggle: jest.fn(),
 };
 
 const setup = (props = {}): ShallowWrapper => {
@@ -34,7 +36,7 @@ describe('<Header /> Component', () => {
       const wrapper = setup();
       const button = findByTestId(wrapper, 'header-component:button');
       button.simulate('click');
-      expect(mockedProps.onClick).toHaveBeenCalledTimes(1);
+      expect(mockedProps.handleToggle).toHaveBeenCalledTimes(1);
     });
   });
 });
