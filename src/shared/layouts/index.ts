@@ -1,4 +1,4 @@
 export * from './main';
 export * from './header';
-export * from './wrapper';
 export * from './section';
+export * from './page-wrapper';
