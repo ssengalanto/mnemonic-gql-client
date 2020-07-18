@@ -6,7 +6,7 @@ const Container = styled.div`
   min-height: 100vh;
   padding: 2rem;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
-  z-index: 100;
+  z-index: 110;
   position: absolute;
   right: 0;
   top: 0;

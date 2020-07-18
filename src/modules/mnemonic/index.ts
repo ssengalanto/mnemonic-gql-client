@@ -1,1 +1,1 @@
-export * from './mnemonic.container';
+export * from './mnemonic.component';
