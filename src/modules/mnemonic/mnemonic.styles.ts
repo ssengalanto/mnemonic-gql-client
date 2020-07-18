@@ -7,16 +7,18 @@ const Circle = styled.div`
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  border: ${(props) => `6px solid ${props.theme.color.brand.primary}`};
+  border: ${(props) => `4px solid ${props.theme.color.brand.primary}`};
 
   @media (min-width: ${(props) => props.theme.breakpoint.md}) {
-    width: 4rem;
-    height: 4rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    border: ${(props) => `5px solid ${props.theme.color.brand.primary}`};
   }
 
   @media (min-width: ${(props) => props.theme.breakpoint.lg}) {
     width: 5rem;
     height: 5rem;
+    border: ${(props) => `6px solid ${props.theme.color.brand.primary}`};
   }
 `;
 

@@ -18,7 +18,7 @@ export const App: React.FC = () => {
         <Suspense fallback={<div>loading...</div>}>
           <Routes routes={initialRoutes} authenticated />
         </Suspense>
-        {/* <Header open={open} onClick={handleToggle} /> */}
+        <Header open={open} onClick={handleToggle} />
         <Suspense fallback={<div>loading...</div>}>
           <Routes routes={routes} authenticated />
         </Suspense>

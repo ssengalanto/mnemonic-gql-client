@@ -1,13 +1,17 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
 
-import { Row, Col, Text } from 'shared/components';
+import { Row, Col, Text, Button } from 'shared/components';
 
 import { S } from './mnemonic.styles';
 
 const AnimatedCircle = animated(S.Circle);
 
-export const Mnemonic: React.FC = () => {
+interface Props {
+  navigate: (path: string) => void;
+}
+
+export const Mnemonic: React.FC<Props> = ({ navigate }) => {
   const bounce = useSpring({
     from: { opacity: 0, transform: 'translateY(-200px)' },
     to: [
@@ -15,7 +19,7 @@ export const Mnemonic: React.FC = () => {
       { opacity: 1, transform: 'translateY(0px)' },
     ],
   });
-  
+
   return (
     <S.Section>
       <Row direction="column" alignContent="space-between">
@@ -28,17 +32,24 @@ export const Mnemonic: React.FC = () => {
               Hello,
             </S.Text>
             <S.Text color="secondary" density="medium">
-              Welcome to
+              welcome to
             </S.Text>
             <S.Text color="secondary" density="medium">
-              Mnemonic
+              mnemonic
             </S.Text>
           </Col>
           <Col flex direction="column" justify="flex-end" alignItems="center">
-            <S.Button>
-              <S.BtnText color="reverse">Login</S.BtnText>
+            <S.Button onClick={() => navigate('/signin')} data-test-id='mnemonic-component:signin-button'>
+              <S.BtnText color="reverse">Sign in</S.BtnText>
             </S.Button>
-            <Text>Don&lsquo;t have an account? Sign up</Text>
+            <Text>
+              Don&lsquo;t have an account?{' '}
+              <Button variant="base" onClick={() => navigate('/signup')} data-test-id='mnemonic-component:signup-button'>
+                <Text color="tertiary" density="semi-bold">
+                  Sign up
+                </Text>
+              </Button>
+            </Text>
           </Col>
         </Col>
       </Row>
