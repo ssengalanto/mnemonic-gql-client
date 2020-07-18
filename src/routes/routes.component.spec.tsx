@@ -42,9 +42,9 @@ const setup = (props: Partial<Props> = {}): ShallowWrapper => {
 
 describe('<Routes /> Component', () => {
   let wrapper: ShallowWrapper;
+
   beforeEach(() => {
     wrapper = setup();
-    return wrapper;
   });
 
   describe('Renders', () => {
@@ -53,15 +53,13 @@ describe('<Routes /> Component', () => {
     });
 
     it('should render all public and private routes when user is authenticated', () => {
-      const authenticated = true;
-      const wrapper = setup({ authenticated });
+      const wrapper = setup({ authenticated: true });
       const component = findByTestId(wrapper, 'route-component');
       expect(component).toHaveLength(routes.length);
     });
 
     it('should only render all public routes when user is not authenticated', () => {
-      const authenticated = false;
-      const wrapper = setup({ authenticated });
+      const wrapper = setup({ authenticated: false });
       const component = findByTestId(wrapper, 'route-component');
       expect(component).toHaveLength(1);
     });

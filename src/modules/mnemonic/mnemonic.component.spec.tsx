@@ -17,20 +17,24 @@ const setup = (props: Partial<Props> = {}): ShallowWrapper => {
 };
 
 describe('<Mnemonic /> Component', () => {
+  let wrapper: ShallowWrapper;
+
+  beforeEach(() => {
+    wrapper = setup();
+  });
+
   afterEach(() => {
     jest.resetAllMocks();
   });
 
   describe('Renders', () => {
     it('should render without crashing', () => {
-      const wrapper = setup();
       expect(wrapper.exists()).toBe(true);
     });
   });
 
   describe('Interactions', () => {
     it('should navigate to "/signin" when signin button is clicked', () => {
-      const wrapper = setup();
       const button = findByTestId(wrapper, 'mnemonic-component:signin-button');
       button.simulate('click');
 
@@ -39,10 +43,9 @@ describe('<Mnemonic /> Component', () => {
     });
 
     it('should navigate to "/signup" when signup button is clicked', () => {
-      const wrapper = setup();
       const button = findByTestId(wrapper, 'mnemonic-component:signup-button');
       button.simulate('click');
-      
+
       expect(mockedProps.navigate).toBeCalledTimes(1);
       expect(mockedProps.navigate).toHaveBeenCalledWith('/signup');
     });

@@ -6,9 +6,9 @@ import { Col } from 'shared/components';
 import { useFadeSpring } from 'shared/hooks';
 
 import { Main } from '../main';
-import { HeaderContainer } from '../header';
-
+import { Footer } from '../footer';
 import { S } from './page-wrapper.styles';
+import { HeaderContainer } from '../header';
 
 interface Props {
   title: string;
@@ -28,10 +28,10 @@ export const PageWrapper: React.FC<Props> = ({ children, title, description, ful
           <title>{title} – Mnemonic</title>
           <meta name="description" content={description} />
         </Helmet>
-        {full && <HeaderContainer />}
+        {full && <HeaderContainer data-test-id="page-wrapper:header" />}
         <Main>{children}</Main>
       </Col>
-      {full && <footer>footer</footer>}
+      {full && <Footer data-test-id="page-wrapper:footer" />}
     </AnimatedRow>
   );
 };

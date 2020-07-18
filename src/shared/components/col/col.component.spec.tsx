@@ -20,14 +20,22 @@ const setup = (props: Partial<Props> = {}): ShallowWrapper => {
 };
 
 describe('<Col /> Component', () => {
+  let wrapper: ShallowWrapper;
+
+  beforeEach(() => {
+    wrapper = setup();
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   describe('Renders', () => {
     it('should render without crashing', () => {
-      const wrapper = setup();
       expect(wrapper.exists()).toBe(true);
     });
 
     it('should render its children props', () => {
-      const wrapper = setup();
       expect(wrapper.contains(<MockComponent />)).toBe(true);
     });
   });
