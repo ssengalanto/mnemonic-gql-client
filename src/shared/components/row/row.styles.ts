@@ -19,6 +19,7 @@ export interface RowProps extends React.ComponentPropsWithoutRef<'div'> {
 }
 
 const Row = styled.div<RowProps>`
+  height: 100%;
   display: flex;
   flex-direction: ${(props) => props.direction || 'row'};
   align-items: ${(props) => props.alignItems || 'stretch'};

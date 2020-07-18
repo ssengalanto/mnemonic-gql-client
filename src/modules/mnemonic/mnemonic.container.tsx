@@ -1,10 +1,14 @@
 import React from 'react';
+import { useNavigate } from '@reach/router';
 
-import { Section } from 'shared/layouts';
-import { Row } from 'shared/components';
+import { Mnemonic } from './mnemonic.component';
 
-export const Mnemonic: React.FC = () => (
-  <Section>
-    <Row span={24}>hahaha</Row>
-  </Section>
-);
+export const MnemonicContainer: React.FC = () => {
+  const navigate = useNavigate();
+
+  const navigateTo = (path: string): void => {
+    navigate(path);
+  };
+
+  return <Mnemonic navigate={navigateTo} />;
+};

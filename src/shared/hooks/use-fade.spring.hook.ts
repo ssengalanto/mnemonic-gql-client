@@ -3,8 +3,8 @@ import { useSpring } from 'react-spring';
 
 export const useFadeSpring = () => {
   const fade = useSpring({
-    to: { opacity: 1 },
     from: { opacity: 0 },
+    to: { opacity: 1 },
   });
 
   return {
