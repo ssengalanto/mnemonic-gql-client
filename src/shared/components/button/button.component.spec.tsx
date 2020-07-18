@@ -22,21 +22,28 @@ const setup = (props: Partial<Props> = {}): ShallowWrapper => {
 };
 
 describe('<Button /> Component', () => {
+  let wrapper: ShallowWrapper;
+
+  beforeEach(() => {
+    wrapper = setup();
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   describe('Renders', () => {
     it('should render without crashing', () => {
-      const component = setup();
-      expect(component.exists()).toBe(true);
+      expect(wrapper.exists()).toBe(true);
     });
 
     it('should render children props', () => {
-      const component = setup();
-      expect(component.contains(<MockComponent />)).toBe(true);
+      expect(wrapper.contains(<MockComponent />)).toBe(true);
     });
   });
 
   describe('<Button /> attributes', () => {
     it('should adopt a default type button', () => {
-      const wrapper = setup();
       expect(wrapper.prop('type')).toBe('button');
     });
 
