@@ -3,9 +3,9 @@ import { ShallowWrapper, shallow } from 'enzyme';
 
 import { findByTestId } from 'tests';
 
-import { Signin } from './signin.component';
+import { Signup } from './signup.component';
 
-type Props = React.ComponentProps<typeof Signin>;
+type Props = React.ComponentProps<typeof Signup>;
 
 const mockedProps: Props = {
   navigate: jest.fn(),
@@ -13,10 +13,10 @@ const mockedProps: Props = {
 
 const setup = (props: Partial<Props> = {}): ShallowWrapper => {
   const setupProps = { ...mockedProps, ...props };
-  return shallow(<Signin {...setupProps} />);
+  return shallow(<Signup {...setupProps} />);
 };
 
-describe('<Signin /> Component', () => {
+describe('<Signup /> Component', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
@@ -35,7 +35,7 @@ describe('<Signin /> Component', () => {
 
   describe('Interactions', () => {
     it('should navigate to previous history when back-button is clicked', () => {
-      const button = findByTestId(wrapper, 'signin-component:back-button');
+      const button = findByTestId(wrapper, 'signup-component:back-button');
       button.simulate('click');
 
       expect(mockedProps.navigate).toBeCalledTimes(1);
@@ -43,11 +43,11 @@ describe('<Signin /> Component', () => {
     });
 
     it('should navigate to "/signup" when signup button is clicked', () => {
-      const button = findByTestId(wrapper, 'signin-component:signup-button');
+      const button = findByTestId(wrapper, 'signup-component:signin-button');
       button.simulate('click');
 
       expect(mockedProps.navigate).toBeCalledTimes(1);
-      expect(mockedProps.navigate).toHaveBeenCalledWith('/signup');
+      expect(mockedProps.navigate).toHaveBeenCalledWith('/signin');
     });
   });
 });

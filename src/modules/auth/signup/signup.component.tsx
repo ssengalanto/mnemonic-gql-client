@@ -4,17 +4,17 @@ import { useSpring, animated } from 'react-spring';
 
 import { Button, Row, Col, Text } from 'shared/components';
 
-import { S } from './signin.styles';
-import { SigninForm } from './signin-form.component';
+import { S } from './signup.styles';
+import { SignupForm } from './signup-form.component';
 
 interface Props {
   navigate: ReturnType<typeof useNavigate>;
 }
 
-const formId = 'signin-form';
+const formId = 'signup-form';
 const AnimatedButton = animated(Button);
 
-export const Signin: React.FC<Props> = ({ navigate }) => {
+export const Signup: React.FC<Props> = ({ navigate }) => {
   const shake = useSpring({
     from: { opacity: 0, transform: 'translateX(30px)' },
     to: { opacity: 1, transform: 'translateX(0px)' },
@@ -25,35 +25,40 @@ export const Signin: React.FC<Props> = ({ navigate }) => {
     <S.Section>
       <Row direction="column" alignContent="space-between">
         <Col>
-          <AnimatedButton style={shake} variant="base" onClick={() => navigate(-1)} data-test-id='signin-component:back-button'>
+          <AnimatedButton
+            style={shake}
+            variant="base"
+            onClick={() => navigate(-1)}
+            data-test-id="signup-component:back-button"
+          >
             <S.BackArrow />
           </AnimatedButton>
         </Col>
         <Col flex direction="column" justify="space-between">
           <Col>
             <S.Text color="primary" density="medium">
-              Sign in
+              Sign up
             </S.Text>
             <S.Text color="secondary" density="medium">
-              to mnemonic
+              an account
             </S.Text>
           </Col>
           <Col>
-            <SigninForm id={formId} />
+            <SignupForm id={formId} />
           </Col>
           <Col flex direction="column" justify="flex-end" alignItems="center">
-            <S.Button data-test-id="signin-component:signin-button" type="submit" form={formId}>
-              <S.BtnText color="reverse">Sign in</S.BtnText>
+            <S.Button data-test-id="signup-component:signup-button" type="submit" form={formId}>
+              <S.BtnText color="reverse">Sign up</S.BtnText>
             </S.Button>
             <Text>
-              Don&lsquo;t have an account?{' '}
+              Already have an account?{' '}
               <Button
                 variant="base"
-                onClick={() => navigate('/signup')}
-                data-test-id="signin-component:signup-button"
+                onClick={() => navigate('/signin')}
+                data-test-id="signup-component:signin-button"
               >
                 <Text color="tertiary" density="semi-bold">
-                  Sign up
+                  Sign in
                 </Text>
               </Button>
             </Text>
