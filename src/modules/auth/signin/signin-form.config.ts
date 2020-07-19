@@ -12,9 +12,9 @@ export type SigninFormFields = SigninFormConfigOptions[];
 export const formFields: SigninFormConfigOptions[] = [
   {
     name: 'email',
-    label: 'Username',
-    type: 'text',
-    placeholder: 'Enter your username...',
+    label: 'Email Address',
+    type: 'email',
+    placeholder: 'Enter your email address...',
   },
   {
     name: 'password',
