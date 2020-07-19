@@ -13,7 +13,7 @@ export const useSigninForm = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required('Email field is required.'),
-      password: Yup.string().min(5).required('Date field is required.'),
+      password: Yup.string().min(5).required('Password field is required.'),
     }),
     onSubmit: async ({ email, password }, { setSubmitting }) => {
       await signin({

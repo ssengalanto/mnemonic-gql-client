@@ -2,13 +2,14 @@ import React from 'react';
 import { RouteComponentProps } from '@reach/router';
 
 import { PageWrapper } from 'shared/layouts';
+import { SigninContainer } from 'modules/auth/signin';
 
 interface Props extends RouteComponentProps {}
 
-const LoginPage: React.FC<Props> = () => (
-  <PageWrapper full title="Login" description="Login to Mnemonic">
-    <div>Login page</div>
+const SigninPage: React.FC<Props> = () => (
+  <PageWrapper title="Signin" description="Signin to Mnemonic">
+    <SigninContainer />
   </PageWrapper>
 );
 
-export default LoginPage;
+export default SigninPage;
