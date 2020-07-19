@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from '@reach/router';
 import { useSpring, animated } from 'react-spring';
 
 import { Row, Col, Text, Button } from 'shared/components';
@@ -8,7 +9,7 @@ import { S } from './mnemonic.styles';
 const AnimatedCircle = animated(S.Circle);
 
 interface Props {
-  navigate: (path: string) => void;
+  navigate: ReturnType<typeof useNavigate>;
 }
 
 export const Mnemonic: React.FC<Props> = ({ navigate }) => {
