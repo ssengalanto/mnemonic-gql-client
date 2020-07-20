@@ -12,8 +12,10 @@ export const useSigninForm = () => {
       password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required('Email field is required.'),
-      password: Yup.string().min(5).required('Password field is required.'),
+      email: Yup.string().email('Email is invalid.').required('Email field is required.'),
+      password: Yup.string()
+        .min(5, 'Password must contains more than 5 characters.')
+        .required('Password field is required.'),
     }),
     onSubmit: async ({ email, password }, { setSubmitting }) => {
       await signin({

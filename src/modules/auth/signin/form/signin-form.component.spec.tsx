@@ -19,6 +19,11 @@ const mockedProps: Props = {
   },
 };
 
+const values: typeof mockedProps.form.initialValues = {
+  email: faker.internet.email(),
+  password: faker.random.word(),
+};
+
 const setup = (props: Partial<Props> = {}): ShallowWrapper => {
   const setupProps = { ...mockedProps, ...props };
   return shallow(<SigninForm {...setupProps} />);
@@ -45,12 +50,7 @@ describe('<SigninForm /> Component', () => {
       expect(form.prop('id')).toBe(mockedProps.id);
     });
 
-    it('should have the correct value prop of email/password input', () => {
-      const values: typeof mockedProps.form.initialValues = {
-        email: faker.internet.email(),
-        password: faker.random.word(),
-      };
-
+    it('should render the correct value prop for all field inputs', () => {
       const wrapper = setup({
         form: { ...mockedProps.form, values },
       });
@@ -60,6 +60,31 @@ describe('<SigninForm /> Component', () => {
 
       const password = findByTestId(wrapper, 'signin-form-component:password-input');
       expect(password.prop('value')).toBe(values.password);
+    });
+
+    it('should correct props to <FieldWrapper /> component', () => {
+      const touched: typeof mockedProps.form.touched = {
+        email: true,
+        password: false,
+      };
+      const errors: typeof mockedProps.form.errors = {
+        email: 'Email is invalid',
+        password: '',
+      };
+
+      const wrapper = setup({
+        form: { ...mockedProps.form, values: { ...values, password: '' }, touched, errors },
+      });
+
+      const emailWrapper = findByTestId(wrapper, 'signin-form-component:email-field-wrapper');
+      expect(emailWrapper.prop('value')).toBe(true);
+      expect(emailWrapper.prop('touched')).toBe(true);
+      expect(emailWrapper.prop('error')).toBe(errors.email);
+
+      const passwordWrapper = findByTestId(wrapper, 'signin-form-component:password-field-wrapper');
+      expect(passwordWrapper.prop('value')).toBe(false);
+      expect(passwordWrapper.prop('touched')).toBe(false);
+      expect(passwordWrapper.prop('error')).toBe(errors.password);
     });
   });
 

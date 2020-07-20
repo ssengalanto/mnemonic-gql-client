@@ -20,6 +20,7 @@ export const SignupForm: React.FC<Props> = ({ id, form, fields }) => (
         touched={form?.touched?.[name]}
         error={form?.errors?.[name]}
         label={label}
+        data-test-id={`signup-form-component:${name}-field-wrapper`}
       >
         <FieldInput
           data-test-id={`signup-form-component:${name}-input`}

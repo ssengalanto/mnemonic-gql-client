@@ -19,6 +19,7 @@ export const SigninForm: React.FC<Props> = ({ id, fields, form }) => (
         touched={form?.touched?.[name]}
         error={form?.errors?.[name]}
         label={label}
+        data-test-id={`signin-form-component:${name}-field-wrapper`}
       >
         <FieldInput
           data-test-id={`signin-form-component:${name}-input`}
