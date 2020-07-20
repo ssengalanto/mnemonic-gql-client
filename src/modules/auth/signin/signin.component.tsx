@@ -5,7 +5,7 @@ import { useSpring, animated } from 'react-spring';
 import { Button, Row, Col, Text } from 'shared/components';
 
 import { S } from './signin.styles';
-import { SigninForm } from './signin-form.component';
+import { SigninFormContainer } from './form';
 
 interface Props {
   navigate: ReturnType<typeof useNavigate>;
@@ -25,7 +25,12 @@ export const Signin: React.FC<Props> = ({ navigate }) => {
     <S.Section>
       <Row direction="column" alignContent="space-between">
         <Col>
-          <AnimatedButton style={shake} variant="base" onClick={() => navigate(-1)} data-test-id='signin-component:back-button'>
+          <AnimatedButton
+            style={shake}
+            variant="base"
+            onClick={() => navigate(-1)}
+            data-test-id="signin-component:back-button"
+          >
             <S.BackArrow />
           </AnimatedButton>
         </Col>
@@ -39,7 +44,7 @@ export const Signin: React.FC<Props> = ({ navigate }) => {
             </S.Text>
           </Col>
           <Col>
-            <SigninForm id={formId} />
+            <SigninFormContainer id={formId} />
           </Col>
           <Col flex direction="column" justify="flex-end" alignItems="center">
             <S.Button data-test-id="signin-component:signin-button" type="submit" form={formId}>
