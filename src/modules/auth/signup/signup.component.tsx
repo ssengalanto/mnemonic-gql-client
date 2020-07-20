@@ -5,7 +5,7 @@ import { useSpring, animated } from 'react-spring';
 import { Button, Row, Col, Text } from 'shared/components';
 
 import { S } from './signup.styles';
-import { SignupForm } from './signup-form.component';
+import { SignupFormContainer } from './form';
 
 interface Props {
   navigate: ReturnType<typeof useNavigate>;
@@ -44,7 +44,7 @@ export const Signup: React.FC<Props> = ({ navigate }) => {
             </S.Text>
           </Col>
           <Col>
-            <SignupForm id={formId} />
+            <SignupFormContainer id={formId} />
           </Col>
           <Col flex direction="column" justify="flex-end" alignItems="center">
             <S.Button data-test-id="signup-component:signup-button" type="submit" form={formId}>

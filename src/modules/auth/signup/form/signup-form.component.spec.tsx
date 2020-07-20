@@ -4,10 +4,10 @@ import { ShallowWrapper, shallow } from 'enzyme';
 
 import { findByTestId } from 'tests';
 
-import { formFields } from './signin-form.config';
-import { SigninForm } from './signin-form.component';
+import { formFields } from './signup-form.config';
+import { SignupForm } from './signup-form.component';
 
-type Props = React.ComponentProps<typeof SigninForm>;
+type Props = React.ComponentProps<typeof SignupForm>;
 
 const mockedProps: Props = {
   id: 'test-form-id',
@@ -21,10 +21,10 @@ const mockedProps: Props = {
 
 const setup = (props: Partial<Props> = {}): ShallowWrapper => {
   const setupProps = { ...mockedProps, ...props };
-  return shallow(<SigninForm {...setupProps} />);
+  return shallow(<SignupForm {...setupProps} />);
 };
 
-describe('<SigninForm /> Component', () => {
+describe('<SignupForm /> Component', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
@@ -41,7 +41,7 @@ describe('<SigninForm /> Component', () => {
     });
 
     it('should have a form id', () => {
-      const form = findByTestId(wrapper, 'signin-form-component:form');
+      const form = findByTestId(wrapper, 'signup-form-component:form');
       expect(form.prop('id')).toBe(mockedProps.id);
     });
 
@@ -49,17 +49,25 @@ describe('<SigninForm /> Component', () => {
       const values: typeof mockedProps.form.initialValues = {
         email: faker.internet.email(),
         password: faker.random.word(),
+        first_name: faker.name.firstName(),
+        last_name: faker.name.lastName(),
       };
 
       const wrapper = setup({
         form: { ...mockedProps.form, values },
       });
 
-      const email = findByTestId(wrapper, 'signin-form-component:email-input');
+      const email = findByTestId(wrapper, 'signup-form-component:email-input');
       expect(email.prop('value')).toBe(values.email);
 
-      const password = findByTestId(wrapper, 'signin-form-component:password-input');
+      const password = findByTestId(wrapper, 'signup-form-component:password-input');
       expect(password.prop('value')).toBe(values.password);
+
+      const firstName = findByTestId(wrapper, 'signup-form-component:first_name-input');
+      expect(firstName.prop('value')).toBe(values.first_name);
+
+      const lastName = findByTestId(wrapper, 'signup-form-component:last_name-input');
+      expect(lastName.prop('value')).toBe(values.last_name);
     });
   });
 
@@ -71,21 +79,21 @@ describe('<SigninForm /> Component', () => {
           value: faker.internet.email(),
         },
       };
-      const input = findByTestId(wrapper, 'signin-form-component:email-input');
+      const input = findByTestId(wrapper, 'signup-form-component:email-input');
       input.simulate('change', target);
 
       expect(mockedProps.form.handleChange).toHaveBeenCalledWith(target);
     });
 
     it('should call handleBlur when performing onBlur action on input', () => {
-      const input = findByTestId(wrapper, 'signin-form-component:email-input');
+      const input = findByTestId(wrapper, 'signup-form-component:email-input');
       input.simulate('blur');
 
       expect(mockedProps.form.handleBlur).toHaveBeenCalledTimes(1);
     });
 
     it('should call handleSubmit when performing onSubmit action on form', () => {
-      const form = findByTestId(wrapper, 'signin-form-component:form');
+      const form = findByTestId(wrapper, 'signup-form-component:form');
       form.simulate('submit');
 
       expect(mockedProps.form.handleSubmit).toHaveBeenCalledTimes(1);
