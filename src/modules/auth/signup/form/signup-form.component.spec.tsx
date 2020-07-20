@@ -24,6 +24,13 @@ const setup = (props: Partial<Props> = {}): ShallowWrapper => {
   return shallow(<SignupForm {...setupProps} />);
 };
 
+const values: typeof mockedProps.form.values = {
+  email: faker.internet.email(),
+  password: faker.random.word(),
+  first_name: faker.name.firstName(),
+  last_name: faker.name.lastName(),
+};
+
 describe('<SignupForm /> Component', () => {
   let wrapper: ShallowWrapper;
 
@@ -45,14 +52,7 @@ describe('<SignupForm /> Component', () => {
       expect(form.prop('id')).toBe(mockedProps.id);
     });
 
-    it('should have the correct value prop of email/password input', () => {
-      const values: typeof mockedProps.form.initialValues = {
-        email: faker.internet.email(),
-        password: faker.random.word(),
-        first_name: faker.name.firstName(),
-        last_name: faker.name.lastName(),
-      };
-
+    it('should render the correct value prop for all field inputs', () => {
       const wrapper = setup({
         form: { ...mockedProps.form, values },
       });
@@ -68,6 +68,31 @@ describe('<SignupForm /> Component', () => {
 
       const lastName = findByTestId(wrapper, 'signup-form-component:last_name-input');
       expect(lastName.prop('value')).toBe(values.last_name);
+    });
+
+    it('should correct props to <FieldWrapper /> component', () => {
+      const touched: typeof mockedProps.form.touched = {
+        email: true,
+        password: false,
+      };
+      const errors: typeof mockedProps.form.errors = {
+        email: 'Email is invalid',
+        password: '',
+      };
+
+      const wrapper = setup({
+        form: { ...mockedProps.form, values: { ...values, password: '' }, touched, errors },
+      });
+
+      const emailWrapper = findByTestId(wrapper, 'signup-form-component:email-field-wrapper');
+      expect(emailWrapper.prop('value')).toBe(true);
+      expect(emailWrapper.prop('touched')).toBe(true);
+      expect(emailWrapper.prop('error')).toBe(errors.email);
+
+      const passwordWrapper = findByTestId(wrapper, 'signup-form-component:password-field-wrapper');
+      expect(passwordWrapper.prop('value')).toBe(false);
+      expect(passwordWrapper.prop('touched')).toBe(false);
+      expect(passwordWrapper.prop('error')).toBe(errors.password);
     });
   });
 

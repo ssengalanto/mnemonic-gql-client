@@ -80,7 +80,7 @@ const BtnText = styled(SharedText)`
 const Button = styled(SharedButton)`
   width: 100%;
   max-width: 42.5rem;
-  padding: 1.2rem;
+  padding: 1rem;
   border-radius: 5rem;
   margin-bottom: 2rem;
 
