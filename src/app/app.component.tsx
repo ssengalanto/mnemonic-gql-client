@@ -9,8 +9,8 @@ import { Routes, initialRoutes, routes } from 'routes';
 export const App: React.FC = () => (
   <ThemeProvider theme={main}>
     <Suspense fallback={<div>loading...</div>}>
-      <Routes routes={initialRoutes} authenticated />
-      <Routes routes={routes} authenticated />
+      <Routes routes={initialRoutes} />
+      <Routes routes={routes} />
     </Suspense>
   </ThemeProvider>
 );

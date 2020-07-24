@@ -1,8 +1,10 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { navigate } from '@reach/router';
 
 import { useSigninMutation } from '__gql-gen__';
+import { accessToken } from 'shared/reactive-variables';
 
 export const useSigninForm = () => {
   const [signin] = useSigninMutation();
@@ -18,12 +20,17 @@ export const useSigninForm = () => {
         .required('Password field is required.'),
     }),
     onSubmit: async ({ email, password }, { setSubmitting }) => {
-      await signin({
+      const { data } = await signin({
         variables: {
           email,
           password,
         },
       });
+
+      if (data?.signin) {
+        accessToken(data.signin);
+        navigate('/home');
+      }
       setSubmitting(false);
     },
   });
