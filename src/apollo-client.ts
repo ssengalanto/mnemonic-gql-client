@@ -1,14 +1,14 @@
 import { setContext } from '@apollo/client/link/context';
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
-import { getAccessToken } from 'shared/utils/access-token';
+import { accessToken } from 'shared/reactive-variables';
 
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_SERVER_URI,
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = getAccessToken();
+  const token = accessToken();
 
   return {
     headers: {
@@ -19,6 +19,18 @@ const authLink = setContext((_, { headers }) => {
 });
 
 export const client = new ApolloClient({
-  cache: new InMemoryCache(),
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          accessToken: {
+            read() {
+              return accessToken();
+            },
+          },
+        },
+      },
+    },
+  }),
   link: authLink.concat(httpLink),
 });
