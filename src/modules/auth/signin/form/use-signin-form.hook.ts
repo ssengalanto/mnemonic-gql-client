@@ -8,6 +8,7 @@ import { accessToken } from 'shared/reactive-variables';
 
 export const useSigninForm = () => {
   const [signin] = useSigninMutation();
+
   const form = useFormik({
     initialValues: {
       email: '',
@@ -19,7 +20,8 @@ export const useSigninForm = () => {
         .min(5, 'Password must contains more than 5 characters.')
         .required('Password field is required.'),
     }),
-    onSubmit: async ({ email, password }, { setSubmitting }) => {
+
+    onSubmit: async ({ email, password }, { setSubmitting, resetForm }) => {
       const { data } = await signin({
         variables: {
           email,
@@ -27,12 +29,15 @@ export const useSigninForm = () => {
         },
       });
 
-      if (data?.signin) {
+      if (data) {
         accessToken(data.signin);
         navigate('/home');
       }
+
       setSubmitting(false);
+      resetForm();
     },
   });
+
   return form;
 };

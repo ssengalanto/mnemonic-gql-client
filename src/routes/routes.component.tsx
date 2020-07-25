@@ -1,31 +1,28 @@
 import React from 'react';
-import { gql, useQuery } from '@apollo/client';
-import { Router, Redirect } from '@reach/router';
+import { Router } from '@reach/router';
 
 import { RouteType } from './routes.enum';
 import { RouteConfigOptions } from './routes.interface';
+import { PrivateRoute } from './private-route.component';
 
 interface Props {
   routes: RouteConfigOptions[];
 }
 
-export const GET_ACCESS_TOKEN = gql`
-  query GetAccessToken {
-    accessToken @client
-  }
-`;
+export const Routes: React.FC<Props> = ({ routes }) => (
+  <Router>
+    {routes.map(({ type, path, component: Component }) => {
+      if (type === RouteType.PRIVATE)
+        return (
+          <PrivateRoute
+            key={path}
+            path={path}
+            component={Component}
+            data-test-id="route-component:private"
+          />
+        );
 
-export const Routes: React.FC<Props> = ({ routes }) => {
-  const { data } = useQuery<{ accessToken: string }>(GET_ACCESS_TOKEN);
-
-  return (
-    <Router>
-      {routes.map(({ type, path, component: Component }) => {
-        if (type === RouteType.PRIVATE && !data?.accessToken)
-          return <Redirect key={path} from="/home" to="/" noThrow />;
-
-        return <Component key={path} path={path} data-test-id="route-component" />;
-      })}
-    </Router>
-  );
-};
+      return <Component key={path} path={path} data-test-id="route-component:public" />;
+    })}
+  </Router>
+);

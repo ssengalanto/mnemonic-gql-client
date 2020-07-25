@@ -1,8 +1,7 @@
 import React from 'react';
-import { ReactWrapper } from 'enzyme';
-import { MockedProviderProps } from '@apollo/client/utilities/testing/mocking/MockedProvider';
+import { shallow, ShallowWrapper } from 'enzyme';
 
-import { MockComponent, renderApollo, wait } from 'tests';
+import { findByTestId, MockComponent } from 'tests';
 
 import { Routes } from './routes.component';
 import { RouteType } from './routes.enum';
@@ -35,14 +34,13 @@ const mockedProps: Props = {
   routes,
 };
 
-const setup = (props: MockedProviderProps = {}): ReactWrapper =>
-  renderApollo({
-    children: <Routes {...mockedProps} />,
-    ...props,
-  });
+const setup = (props: Partial<Props> = {}): ShallowWrapper => {
+  const setupProps = { ...mockedProps, ...props };
+  return shallow(<Routes {...setupProps} />);
+};
 
 describe('<Routes /> Component', () => {
-  let wrapper: ReactWrapper;
+  let wrapper: ShallowWrapper;
 
   beforeEach(() => {
     wrapper = setup();
@@ -50,20 +48,15 @@ describe('<Routes /> Component', () => {
 
   describe('Renders', () => {
     it('should render without crashing', async () => {
-      await wait(wrapper);
       expect(wrapper.exists()).toBe(true);
     });
 
-    // it('should render all public and private routes when user is authenticated', () => {
-    //   const wrapper = setup({ authenticated: true });
-    //   const component = findByTestId(wrapper, 'route-component');
-    //   expect(component).toHaveLength(routes.length);
-    // });
+    it('should render route types correctly', () => {
+      const publicRoute = findByTestId(wrapper, 'route-component:public');
+      expect(publicRoute).toHaveLength(1);
 
-    // it('should only render all public routes when user is not authenticated', () => {
-    //   const wrapper = setup({ authenticated: false });
-    //   const component = findByTestId(wrapper, 'route-component');
-    //   expect(component).toHaveLength(1);
-    // });
+      const privateRoute = findByTestId(wrapper, 'route-component:private');
+      expect(privateRoute).toHaveLength(2);
+    });
   });
 });
