@@ -19,18 +19,6 @@ const authLink = setContext((_, { headers }) => {
 });
 
 export const client = new ApolloClient({
-  cache: new InMemoryCache({
-    typePolicies: {
-      Query: {
-        fields: {
-          accessToken: {
-            read() {
-              return accessToken();
-            },
-          },
-        },
-      },
-    },
-  }),
+  cache: new InMemoryCache(),
   link: authLink.concat(httpLink),
 });

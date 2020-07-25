@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 
 import { RouteType } from './routes.enum';
@@ -10,15 +9,6 @@ const SignupPage = React.lazy(() => import('pages/signup.page'));
 const MnemonicPage = React.lazy(() => import('pages/mnemonic.page'));
 
 export const routes: RouteConfigOptions[] = [
-  {
-    path: '/home',
-    label: 'home',
-    component: HomePage,
-    type: RouteType.PRIVATE,
-  },
-];
-
-export const initialRoutes: RouteConfigOptions[] = [
   {
     path: '/',
     label: 'mnemonic',
@@ -36,5 +26,11 @@ export const initialRoutes: RouteConfigOptions[] = [
     label: 'signup',
     component: SignupPage,
     type: RouteType.PUBLIC,
+  },
+  {
+    path: '/home',
+    label: 'home',
+    component: HomePage,
+    type: RouteType.PRIVATE,
   },
 ];
