@@ -1,7 +1,9 @@
 import { setContext } from '@apollo/client/link/context';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
+import { ApolloClient, HttpLink } from '@apollo/client';
 
-import { accessToken } from 'shared/reactive-variables';
+import { accessToken } from 'apollo/state';
+
+import { cache } from './cache';
 
 const httpLink = new HttpLink({
   uri: process.env.REACT_APP_SERVER_URI,
@@ -19,6 +21,6 @@ const authLink = setContext((_, { headers }) => {
 });
 
 export const client = new ApolloClient({
-  cache: new InMemoryCache(),
+  cache,
   link: authLink.concat(httpLink),
 });

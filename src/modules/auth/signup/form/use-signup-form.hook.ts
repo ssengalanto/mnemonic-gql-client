@@ -1,11 +1,14 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useNavigate } from '@reach/router';
 
 import { useSignupMutation } from '__gql-gen__';
+import { setAuthState } from 'apollo/state';
 
 export const useSignupForm = () => {
   const [signup] = useSignupMutation();
+  const navigate = useNavigate();
 
   const form = useFormik({
     initialValues: {
@@ -22,8 +25,9 @@ export const useSignupForm = () => {
         .min(5, 'Password must contains more than 5 characters.')
         .required('Password field is required.'),
     }),
-    onSubmit: async ({ email, password, first_name, last_name }, { setSubmitting }) => {
-      await signup({
+
+    onSubmit: async ({ email, password, first_name, last_name }, { setSubmitting, resetForm }) => {
+      const { data } = await signup({
         variables: {
           email,
           password,
@@ -31,8 +35,16 @@ export const useSignupForm = () => {
           last_name,
         },
       });
+
+      if (data) {
+        setAuthState(data.signup);
+        navigate('/home');
+      }
+
       setSubmitting(false);
+      resetForm();
     },
   });
+
   return form;
 };
