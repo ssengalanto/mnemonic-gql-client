@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { navigate } from '@reach/router';
 
 import { useSigninMutation } from '__gql-gen__';
-import { accessToken } from 'shared/reactive-variables';
+import { setAuthState } from 'apollo/state';
 
 export const useSigninForm = () => {
   const [signin] = useSigninMutation();
@@ -30,7 +30,7 @@ export const useSigninForm = () => {
       });
 
       if (data) {
-        accessToken(data.signin);
+        setAuthState(data.signin);
         navigate('/home');
       }
 

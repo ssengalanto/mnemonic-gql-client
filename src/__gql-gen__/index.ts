@@ -61,7 +61,7 @@ export type Mutation = {
   __typename?: 'Mutation';
   deleteReminder?: Maybe<Reminder>;
   createReminder: Reminder;
-  signup: User;
+  signup: Scalars['String'];
   signin: Scalars['String'];
 };
 
@@ -124,12 +124,7 @@ export type SignupMutationVariables = Exact<{
   last_name: Scalars['String'];
 }>;
 
-export type SignupMutation = { __typename?: 'Mutation' } & {
-  signup: { __typename?: 'User' } & Pick<
-    User,
-    'id' | 'email' | 'first_name' | 'last_name' | 'active'
-  >;
-};
+export type SignupMutation = { __typename?: 'Mutation' } & Pick<Mutation, 'signup'>;
 
 export type ReminderQueryVariables = Exact<{
   id: Scalars['String'];
@@ -219,13 +214,7 @@ export const SignupDocument = gql`
         first_name: $first_name
         last_name: $last_name
       }
-    ) {
-      id
-      email
-      first_name
-      last_name
-      active
-    }
+    )
   }
 `;
 export type SignupMutationFn = ApolloReactCommon.MutationFunction<
