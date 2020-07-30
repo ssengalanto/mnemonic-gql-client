@@ -31,6 +31,6 @@ export const routes: RouteConfigOptions[] = [
     path: '/home',
     label: 'home',
     component: HomePage,
-    type: RouteType.PRIVATE,
+    type: RouteType.PUBLIC,
   },
 ];

@@ -10,6 +10,18 @@ const Logo = styled.span<LogoProps>`
   font-weight: ${(props) => props.theme.density.medium};
   color: ${(props) =>
     props.variant === 'reverse' ? props.theme.color.text.reverse : props.theme.color.brand.primary};
+
+  @media (min-width: ${(props) => props.theme.breakpoint.md}) {
+    font-size: 2.5rem;
+  }
+
+  @media (min-width: ${(props) => props.theme.breakpoint.lg}) {
+    font-size: 3rem;
+  }
+
+  @media (min-width: ${(props) => props.theme.breakpoint.xxl}) {
+    font-size: 3.5rem;
+  }
 `;
 
 export const S = { Logo };

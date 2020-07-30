@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { useFormik } from 'formik';
 import { useNavigate } from '@reach/router';
 
 import { useSignupMutation } from '__gql-gen__';
