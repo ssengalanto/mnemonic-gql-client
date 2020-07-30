@@ -35,6 +35,10 @@ const Burger = styled.div`
     font-size: 0.8rem;
     cursor: pointer;
     transition: 0.2s all;
+
+    @media (min-width: ${(props) => props.theme.breakpoint.lg}) {
+      font-size: 1rem;
+    }
   }
   .burger .burger-lines:after {
     left: 0;
