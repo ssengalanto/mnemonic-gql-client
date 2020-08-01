@@ -23,12 +23,12 @@ export const PageWrapper: React.FC<Props> = ({ children, title, description, ful
 
   return (
     <AnimatedRow direction="column" style={fade}>
+      <Helmet data-test-id="page-helmet">
+        <title>{title} – Mnemonic</title>
+        <meta name="description" content={description} />
+      </Helmet>
+      {full && <HeaderContainer data-test-id="page-wrapper:header" />}
       <Col>
-        <Helmet data-test-id="page-helmet">
-          <title>{title} – Mnemonic</title>
-          <meta name="description" content={description} />
-        </Helmet>
-        {full && <HeaderContainer data-test-id="page-wrapper:header" />}
         <Main>{children}</Main>
       </Col>
       {full && <Footer data-test-id="page-wrapper:footer" />}

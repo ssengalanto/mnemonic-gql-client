@@ -1,8 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 
-import { findByTestId } from 'tests';
-
 import { Greetings } from './greetings.component';
 
 type Props = React.ComponentProps<typeof Greetings>;

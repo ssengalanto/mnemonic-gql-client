@@ -40,12 +40,19 @@ export const Mnemonic: React.FC<Props> = ({ navigate }) => {
             </S.Text>
           </Col>
           <Col flex direction="column" justify="flex-end" alignItems="center">
-            <S.Button onClick={() => navigate('/signin')} data-test-id='mnemonic-component:signin-button'>
+            <S.Button
+              onClick={() => navigate('/signin')}
+              data-test-id="mnemonic-component:signin-button"
+            >
               <S.BtnText color="reverse">Sign in</S.BtnText>
             </S.Button>
             <Text>
               Don&lsquo;t have an account?{' '}
-              <Button variant="base" onClick={() => navigate('/signup')} data-test-id='mnemonic-component:signup-button'>
+              <Button
+                variant="base"
+                onClick={() => navigate('/signup')}
+                data-test-id="mnemonic-component:signup-button"
+              >
                 <Text color="tertiary" density="semi-bold">
                   Sign up
                 </Text>
